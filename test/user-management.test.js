@@ -34,7 +34,7 @@ describe("User Management", () => {
     // we should be able to get the user
     const user = await UsersDAO.getUser(testUser.email)
     // for comparison, we delete the _id key returned from Mongo
-    delete user._id
+    // delete user._id
     expect(user).toEqual(testUser)
   })
 
@@ -47,8 +47,10 @@ describe("User Management", () => {
 
   test("it allows a user to login", async () => {
     const actual = await UsersDAO.loginUser(testUser.email, sessionUser.jwt)
+    console.log(actual);
     expect(actual.success).toBeTruthy()
     const sessionResult = await UsersDAO.getUserSession(testUser.email)
+    console.log(sessionResult);
     delete sessionResult._id
     expect(sessionResult).toEqual(sessionUser)
   })
