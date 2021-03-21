@@ -194,6 +194,9 @@ export default class MoviesDAO {
     const queryPipeline = [
       matchStage,
       sortStage,
+      skipStage,
+      limitStage,
+      facetStage,
       // TODO Ticket: Faceted Search
       // Add the stages to queryPipeline in the correct order.
     ]
@@ -256,7 +259,7 @@ export default class MoviesDAO {
 
     // TODO Ticket: Paging
     // Use the cursor to only return the movies that belong on the current page
-    const displayCursor = cursor.limit(moviesPerPage)
+    const displayCursor = cursor.skip(page * moviesPerPage).limit(moviesPerPage)
 
     try {
       const moviesList = await displayCursor.toArray()
@@ -292,16 +295,31 @@ export default class MoviesDAO {
       // Implement the required pipeline.
       const pipeline = [
         {
-          $match: {
+          '$match': {
             _id: ObjectId(id)
           }
-        }
+        }, {
+          '$lookup': {
+            'from': 'comments',
+            'let': { 'id': '$_id' },
+            'pipeline': [
+              {
+                '$match': {
+                  '$expr': { '$eq': ['$movie_id', '$$id'] }
+                }
+              },
+              { '$sort': { 'date': -1 } }
+            ],
+            'as': 'comments'
+          }
+        },
+
       ]
-      return await movies.aggregate(pipeline).next()
+      return await movies.aggregate(pipeline).sort({ 'comments.date': -1 }).next()
     } catch (e) {
       /**
       Ticket: Error Handling
-
+  
       Handle the error that occurs when an invalid ID is passed to this method.
       When this specific error is thrown, the method should return `null`.
       */
