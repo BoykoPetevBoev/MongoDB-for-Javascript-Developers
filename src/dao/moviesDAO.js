@@ -317,16 +317,18 @@ export default class MoviesDAO {
       ]
       return await movies.aggregate(pipeline).sort({ 'comments.date': -1 }).next()
     } catch (e) {
+      console.error(`Something went wrong in getMovieByID: ${e}`)
       /**
-      Ticket: Error Handling
-  
-      Handle the error that occurs when an invalid ID is passed to this method.
-      When this specific error is thrown, the method should return `null`.
-      */
-
+       Ticket: Error Handling
+       
+       Handle the error that occurs when an invalid ID is passed to this method.
+       When this specific error is thrown, the method should return `null`.
+       */
+      // if(e.code === 11000)
+      return null;
+      
       // TODO Ticket: Error Handling
       // Catch the InvalidId error by string matching, and then handle it.
-      console.error(`Something went wrong in getMovieByID: ${e}`)
       throw e
     }
   }
