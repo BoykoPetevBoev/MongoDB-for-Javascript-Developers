@@ -1,6 +1,6 @@
 # M220JS: MongoDB for Javascript Developers
 
-Learn the essentials of Node.js application development with MongoDB.
+![M220JS: MongoDB for Javascript Developers](https://github.com/BoykoPetevBoev/MongoDB-for-Javascript-Developers/blob/main/M220JS_proof_of_completion.jpg)
 
 ## What You'll Learn
 
