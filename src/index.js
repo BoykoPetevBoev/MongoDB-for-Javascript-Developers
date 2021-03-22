@@ -5,7 +5,14 @@ import UsersDAO from "./dao/usersDAO"
 import CommentsDAO from "./dao/commentsDAO"
 
 const port = process.env.PORT || 8000
-
+const url = process.env.MFLIX_DB_URI
+const options = { 
+  poolSize: 50, 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true,
+  w: "majority",
+  wtimeout: 2500
+}
 /**
 Ticket: Connection Pooling
 
@@ -19,15 +26,13 @@ Ticket: Timeouts
 Please prevent the program from waiting indefinitely by setting the write
 concern timeout limit to 2500 milliseconds.
 */
+// TODO: Connection Pooling
+// Set the poolSize to 50 connections.
+// TODO: Timeouts
+// Set the write timeout limit to 2500 milliseconds.
 
-MongoClient.connect(
-  process.env.MFLIX_DB_URI,
-  // TODO: Connection Pooling
-  // Set the poolSize to 50 connections.
-  // TODO: Timeouts
-  // Set the write timeout limit to 2500 milliseconds.
-  { useNewUrlParser: true },
-)
+
+MongoClient.connect(url, options)
   .catch(err => {
     console.error(err.stack)
     process.exit(1)
