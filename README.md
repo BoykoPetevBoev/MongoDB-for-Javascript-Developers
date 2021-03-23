@@ -2,7 +2,7 @@
 
 ![M220JS: MongoDB for Javascript Developers](https://github.com/BoykoPetevBoev/MongoDB-for-Javascript-Developers/blob/main/M220JS_proof_of_completion.jpg)
 
-## What You'll Learn
+## About
 
 This course will teach you how to use MongoDB as the database for a Node.js application.
 
@@ -16,10 +16,25 @@ You will also add more features to the MFlix application. This includes writing 
 
 ## Course Agenda
 
-* Chapter 0: Introduction and Setup
-* Chapter 1: Driver Setup
-* Chapter 2: User-Facing Backend
-* Chapter 3: Admin Backend
-* Chapter 4: Resiliency
+* Chapter 0
+Introduction and Setup.
+Course logistics, requirements for environment setup, and application architecture.
+
+* Chapter 1
+Driver Setup.
+Database client configuration, basic reads.
+
+* Chapter 2:
+User-Facing Backend.
+Basic aggregation, updates, deletes, and joins.
+
+* Chapter 3
+Admin Backend.
+Read concerns and bulk operations.
+
+* Chapter 4
+Resiliency.
+Connection pooling, error and timeout handling, and principle of least privilege.
+
 * Final Exam
 
