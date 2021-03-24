@@ -51,7 +51,7 @@ describe("Basic Deletes", () => {
     expect(insertResult.insertedCount).toBe(10)
     expect(Object.values(insertResult.insertedIds).length).toBe(10)
     // and we can see what the insertIds were
-    console.log(Object.values(insertResult.insertedIds))
+    // console.log(Object.values(insertResult.insertedIds))
   })
 
   it("deleteOne", async () => {
@@ -94,9 +94,9 @@ describe("Basic Deletes", () => {
 
     let countDocuments = await videoGames.count({})
 
-    console.log(
-      `collection had ${countDocumentsBefore} documents, now has ${countDocuments}`,
-    )
+    // console.log(
+    //   `collection had ${countDocumentsBefore} documents, now has ${countDocuments}`,
+    // )
 
     // We just did our first delete.
   })
@@ -128,7 +128,7 @@ describe("Basic Deletes", () => {
     // that there is one less than we inserted
     let countDocuments = await videoGames.count({})
 
-    console.log(countDocuments)
+    // console.log(countDocuments)
     // All good. As expected.
   })
 

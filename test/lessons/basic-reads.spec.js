@@ -40,7 +40,7 @@ describe("Basic Reads", () => {
     // be Roadracers. Let's check the title, year, and cast.
 
     let { title, year, cast } = result
-    console.log(result)
+    // console.log(result)
 
     // we expect a title of Roadracers, the year would be 1994, and the cast
     // includes Salma Hayek and David Arquette
@@ -81,7 +81,7 @@ describe("Basic Reads", () => {
     // title, year, and _id
     expect(Object.keys(result).length).toBe(3)
 
-    console.log(result)
+    // console.log(result)
 
     // Note that only the fields we specify in the projection section of the
     // query will be returned in our result set with the exception of the _id
@@ -96,7 +96,7 @@ describe("Basic Reads", () => {
     expect(result2).not.toBeNull()
     expect(Object.keys(result2).length).toBe(2)
 
-    console.log(result2)
+    // console.log(result2)
   })
 
   /**
@@ -143,7 +143,7 @@ describe("Basic Reads", () => {
     expect(cast).toContain("Johnny Depp")
     expect(cast).toContain("Salma Hayek")
 
-    console.log({ title, year, cast })
+    // console.log({ title, year, cast })
   })
 })
 

@@ -60,7 +60,7 @@ describe("Error Handling", () => {
       expect(e).not.toBeUndefined()
       // we get an error message stating we've tried to insert a duplicate key
       expect(e.errmsg).toContain("E11000 duplicate key error collection")
-      console.log(e)
+      // console.log(e)
     }
   })
 
@@ -139,7 +139,7 @@ describe("Error Handling", () => {
     } catch (e) {
       expect(e).not.toBeNull()
       // Now let's check the error that was returned from the driver.
-      console.log(e)
+      // console.log(e)
     }
   })
 })
