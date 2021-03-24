@@ -214,7 +214,7 @@ describe("Basic Updates", () => {
 
     // this upsertedId contains the _id of the document that we just upserted
     expect(upsertResult.upsertedId).not.toBeNull()
-    console.log(upsertResult.upsertedId)
+    // console.log(upsertResult.upsertedId)
 
     // remove the document so it can be upserted again
     const cleanUp = await theaters.deleteOne({

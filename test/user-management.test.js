@@ -20,21 +20,10 @@ describe("User Management", () => {
   })
 
   test("it can add a new user to the database", async () => {
-    /**
-     * The password WILL be hashed at the API layer prior to sending it to the
-     * UsersDAO object.
-     * NEVER
-     * NEVER
-     * NEVER store plaintext passwords, PLEASE
-     */
     const actual = await UsersDAO.addUser(testUser)
     expect(actual.success).toBeTruthy()
     expect(actual.error).toBeUndefined()
-
-    // we should be able to get the user
     const user = await UsersDAO.getUser(testUser.email)
-    // for comparison, we delete the _id key returned from Mongo
-    // delete user._id
     expect(user).toEqual(testUser)
   })
 
@@ -47,10 +36,8 @@ describe("User Management", () => {
 
   test("it allows a user to login", async () => {
     const actual = await UsersDAO.loginUser(testUser.email, sessionUser.jwt)
-    console.log(actual);
     expect(actual.success).toBeTruthy()
     const sessionResult = await UsersDAO.getUserSession(testUser.email)
-    console.log(sessionResult);
     delete sessionResult._id
     expect(sessionResult).toEqual(sessionUser)
   })

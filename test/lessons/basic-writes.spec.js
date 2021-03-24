@@ -41,7 +41,7 @@ describe("Basic Writes", () => {
     // if we don't specify an _id when we write to the database, MongoDB will
     // insert one for us and return this to us here
     expect(insertResult.insertedId).not.toBeUndefined()
-    console.log("inserted _id", insertResult.insertedId)
+    // console.log("inserted _id", insertResult.insertedId)
 
     // let's ensure that we can find document we just inserted with the
     // insertedId we just received
@@ -96,7 +96,7 @@ describe("Basic Writes", () => {
     expect(insertResult.insertedCount).toBe(10)
     expect(Object.values(insertResult.insertedIds).length).toBe(10)
     // and we can see what the insertIds were
-    console.log(Object.values(insertResult.insertedIds))
+    // console.log(Object.values(insertResult.insertedIds))
   })
   /**
    * Inserting is a useful write operation, but it's very simple. It inserts
@@ -130,7 +130,7 @@ describe("Basic Writes", () => {
     expect(upsertResult.result.nModified).toBe(0)
     // and here's the information that the result.upserted key contains
     // an _id and an index
-    console.log(upsertResult.result.upserted)
+    // console.log(upsertResult.result.upserted)
 
     // what if the document existed?
     upsertResult = await videoGames.updateOne(
@@ -145,7 +145,7 @@ describe("Basic Writes", () => {
       { upsert: true },
     )
     // we can see the second upsert result does not have an upserted key
-    console.log("second upsert result", upsertResult.result)
+    // console.log("second upsert result", upsertResult.result)
     expect(upsertResult.result.nModified).toBe(1)
 
     // upserts are useful, especially when we can make a write operation
